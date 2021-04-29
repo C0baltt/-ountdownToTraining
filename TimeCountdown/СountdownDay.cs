@@ -7,6 +7,7 @@ namespace TimeCountdown
         private DayOfWeek _nextDayLearning;
         private DateTime _timeStartOfTraining;
         //.AddHours(double 19)
+        private DateTime _today = DateTime.Now;
 
         internal DateTime TimeStartOfTraining
         {
@@ -20,19 +21,21 @@ namespace TimeCountdown
             }
         }
 
-        private DayOfWeek NextDayLearning { get => _nextDayLearning; set => _nextDayLearning = FindNextDayLearning(); }
+        private DayOfWeek NextDayLearningDayOfWeek
+        { get => _nextDayLearning; set => _nextDayLearning = FindNextDayLearning(); }
 
         public СountdownDay()
         {
             //_nextDayLearning = FindNextDayLearning();
-            NextDayLearning = _nextDayLearning;
+            NextDayLearningDayOfWeek = _nextDayLearning;
         }
 
         private DayOfWeek FindNextDayLearning()
         {
-            if ((DateTime.Now.DayOfWeek != DayOfWeek.Monday) &&
-                (DateTime.Now.DayOfWeek <= DayOfWeek.Wednesday))
+            if ((DateTime.Now.DayOfWeek <= DayOfWeek.Wednesday) &&
+                (DateTime.Now.DayOfWeek != DayOfWeek.Monday))
             {
+                
                 return DayOfWeek.Wednesday;
             }
             else
@@ -41,6 +44,18 @@ namespace TimeCountdown
             }
         }
 
+        //private DateTime NextDayLearningDateTime = _today.AddDays(NextDayLearningDayOfWeek - DayOfWeek);
+
         //date1.Subtract(date2)
+
+        /*
+        public void CalculateDifference()
+        {
+           DateTime different = NextDayLearningDayOfWeek.Subtract(DateTime.Today);
+                        if (different.CompareTo(0)) 
+                        {
+                            different += numderOfDaysOfTheWeek; 
+                        }
+        }*/
     }
 }
