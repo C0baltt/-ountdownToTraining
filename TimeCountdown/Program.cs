@@ -24,7 +24,7 @@ namespace TimeCountdown
                 }
             }
 
-            Console.SetWindowSize(30, 5);
+            Console.SetWindowSize(35, 10);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.BackgroundColor = ConsoleColor.White;
             var zero = new TimeSpan(0, 0, 0);
@@ -35,13 +35,14 @@ namespace TimeCountdown
                 p = nextDayLearning.Subtract(DateTime.Now);
 
                 string text = p.ToString();
-                int ind = text.Length - 10;
+                int ind = text.Length - 8;
                 Console.WriteLine($"Времени до занятия: {text.Remove(ind)}  ");
                 Console.SetCursorPosition(5, 2);
 
-                text = p.TotalHours.ToString();
+                /*text = p.TotalHours.ToString();
                 ind = text.Length - 10;
                 Console.WriteLine($"Часов до занятия: {text.Remove(ind)}");
+                */
             }
         }
     }
